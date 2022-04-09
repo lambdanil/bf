@@ -10,12 +10,15 @@ void evaluate(char* cmd) {
     char* ptr;
     ptr = ptrMem;
     char* cins;
+    bool inLoop = false;
     cins = cmd;
     ptrdiff_t bytes = cins-cmd;
     int cmdlen = strlen(cmd);
     while (true) { 
-        bytes = cins-cmd;
-        if (bytes > cmdlen-1) break;
+        if (inLoop == false) {
+            bytes = cins-cmd;
+            if (bytes > cmdlen-1) break;
+        }
         switch (*cins) {
             case '>':
                 ++ptr;
@@ -36,7 +39,9 @@ void evaluate(char* cmd) {
                 cin >> *ptr;
                 break;
             case '[':
+                inLoop = true;
                 if (*ptr == 0) {
+                    inLoop = false;
                     int depth = 1;
                     while (depth != 0) {
                         ++cins;
