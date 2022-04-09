@@ -67,6 +67,23 @@ void evaluate(char* cmd) {
 
 int main(int argc, char** argv) {
     char* cmd;
-    cmd = argv[1];
+    cmd = new char[500000];
+    //cmd = argv[1];
+    int index = 0;
+    bool newline = true;
+    bool isComment = false;
+    int i = 0;
+    for (int i = 0; i < strlen(argv[1]); i++) {
+        if (argv[1][i] == '%') newline = false;
+        if (argv[1][i] == '\n') newline = true;
+        if (argv[1][i] == '#') {
+            if (isComment) isComment=false;
+            else isComment=true;
+        }
+        if ((argv[1][i] == '>' || argv[1][i] == '<' || argv[1][i] == '+' || argv[1][i] == '-' || argv[1][i] == '[' || argv[1][i] == ']' || argv[1][i] == ',' || argv[1][i] == '.') && newline && isComment == false) {
+            cmd[index] = argv[1][i];
+            index++;
+        }
+    }
     evaluate(cmd);
 }
