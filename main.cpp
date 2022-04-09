@@ -86,4 +86,5 @@ int main(int argc, char** argv) {
         }
     }
     evaluate(cmd);
+    delete[] cmd;
 }
