@@ -12,7 +12,7 @@ g++ main.cpp -O2 -o bf
 ```
 
 ```
-./bf "$(cat file.bf) # To read from file"
+./bf "$(cat file.bf)" # To read from file
 ```
 
 * Lines after '%' are considered a comment
