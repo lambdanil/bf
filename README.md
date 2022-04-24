@@ -18,7 +18,7 @@ g++ main.cpp -O2 -o bf
 ### The compiler allows building brainfuck into c++ code, much faster than using the interpreter
 ```
 g++ compiler.cpp
-./a.out pg > code.cpp
+./a.out <path to code> > code.cpp
 g++ -O2 code.cpp
 ./a.out
 ```
